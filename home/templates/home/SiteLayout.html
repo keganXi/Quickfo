@@ -1,0 +1,234 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" href="{% static 'home/images/quickfo.png' %}" type="image/png"/>
+
+    <style>
+      #homeImg{
+        width:35px;
+        height:35px;
+      }
+
+      @media (max-width: 913px) { 
+        #innerBody{
+          margin-left: 0%;
+          margin-right: 0%;
+        }
+
+        #newsText{
+          margin-left: 5%;
+        }
+
+        #topText{
+          margin-left: 15%;
+          margin-right: 15%;
+        }
+
+        #loadedStories{
+          margin-left: 15%;
+          margin-right: 15%;
+        }
+
+        
+        #cardAlign{
+          align: center;
+        }
+
+
+       }
+
+      @media (min-width: 914px)
+      {
+        #innerBody{
+        margin-left: 15%;
+        margin-right: 15%;
+        }
+      } 
+
+      #dimLine{
+        margin-top: 20%;
+        width: 100%;
+      }
+
+
+      #aboutBarText{
+        color: #00ace6;
+        margin-left: 3%;
+        padding-bottom: 20px
+      }
+
+
+
+      #listOfSites{
+        color: #00ace6;
+        text-align: center;
+      }
+
+      
+    @media only screen and (max-width: 414px){
+      #contentHeading{
+        font-size: 25px;
+      }
+
+    }
+
+      @media screen and (min-width: 15px){
+        #navbarBrand{
+          font-family: Verdana;
+          font-size: 23px;
+        }
+      }
+      
+      
+    
+      </style>
+
+    {% block stylers %}{% endblock stylers %}
+
+    {% block jumbo %}
+
+    {% endblock jumbo %}
+
+
+  </head>
+  <body>
+  
+  <!-------------------------------------------NAVBAR-------------------------------------------->
+
+  
+  <!-- Image and text -->
+  <nav id="navbar" class="shadow p-3; navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 23px"><img id="homeImg" src="{% static 'home/images/quickfo.png' %}"><strong>uickFo</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+		  <li class="nav-item active">
+			<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'tech-page' %}">Technology</a>
+		  </li>
+      <li class="nav-item">
+			<a class="nav-link" href="{% url 'entertainment-page' %}">Entertainment</a>
+		  </li>
+      <li class="nav-item">
+			<a class="nav-link" href="{% url 'sports-page' %}">Sports</a>
+		  </li>
+		</ul>
+  </div>
+
+  </nav>
+  
+    <!------------------------------------------------------------------------------------------------->
+
+    {% block carousel %}{% endblock carousel %}
+    <div id="innerBody">
+  
+    {% block after_nav %}{% endblock after_nav %}
+    <br>
+    <br>
+    <br>
+    
+    
+
+    {% block content_body %}
+
+    <div class="container-fluid" id="cardAlign">
+    <div class="row">
+    <!---- for loop code -->
+        {% block card_content %}
+        
+        {% endblock card_content %}
+    <!--- endfor code--->
+    </div>
+    </div>
+
+    
+   <!------------------------------------------------------------------------------------------------------> 
+  <script>
+    // In Process...
+  </script>
+  
+
+  {% endblock content_body %}
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    
+
+  </div>
+  <hr id="dimLine">
+    
+    <div class="container-fluid">
+      <table align="center" style="margin-bottom: 3%">
+      <thead>
+        <tr>
+          <th><h5 class="text-muted"><strong>Sites</strong><h5></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.theverge.com/">The Verge</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.independent.co.uk/">Independent</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://gizmodo.com/">Gizmodo</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.theguardian.com/international">The Guardian</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.msnbc.com/">MSNBC</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.iol.co.za/">IOL</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.cnet.com/">Cnet</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.foxsports.com/">Fox sports</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.bbc.com/news">BBC</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.xxlmag.com/">XXL Mag</a></td>
+        </tr>
+        <tr>
+          <td><a href="http://time.com/">Time</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://mashable.com/">Mashable</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.vox.com/recode">Recode</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  
+ 
+  </div>
+  </body>
+</html>

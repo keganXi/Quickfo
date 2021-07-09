@@ -1,0 +1,213 @@
+{% extends 'home/SiteLayout.html' %}
+{% block title %}QuickFo{% endblock title %}
+
+{% block stylers %}
+
+<style>
+
+  #cf{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  hr {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  #circle {
+    width: 125px;
+    height: 125px;
+    border-radius:100%;
+  }
+
+  #tech{
+    margin-left: 66px;
+  }
+
+
+  #world{
+    margin-left: 90px;
+  }
+
+
+  #ent{
+    margin-left: 87px;
+  }
+
+
+  #sports{
+    margin-left: 75px;
+  }
+
+
+  #newsHead{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+  }
+
+
+  #loadMore{
+    margin-bottom: 5%;
+    max-width: 500px;
+  }
+
+  
+		#imgSizer{
+			min-height: 250px;
+			max-height: 450px;
+		}
+
+
+</style>
+
+{% endblock stylers %}
+
+{% block carousel %}
+      
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="https://www.theverge.com/"><img src="https://fsmedia.imgix.net/51/f2/b2/e3/1bc4/498c/a304/4f074489ea44/majd-bakar-the-head-of-engineering-for-stadia-announces-that-google-has-partnered-with-amd-to-create.png" id="imgSizer" class="d-block w-100" alt="..."></a>
+          <div class="carousel-caption d-md-block">
+            <h5>The Verge</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://www.msnbc.com/"><img src="https://i.ytimg.com/vi/fup-jRZKd1M/maxresdefault.jpg" id="imgSizer" class="d-block w-100" alt="..."></a>
+          <div class="carousel-caption d-md-block">
+            <h5>MSNBC</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <a href="https://www.xxlmag.com/"><img src="https://i.pinimg.com/originals/73/f4/fd/73f4fd5e8424f912b7d018adf6b27929.jpg" id="imgSizer" class="d-block w-100" alt="..."></a>
+          <div class="carousel-caption d-md-block">
+            <h5>XXL Mag</h5>
+          </div>
+        </div>
+      <div class="carousel-item">
+          <a href="https://www.independent.co.uk/"><img src="https://d2d0b2rxqzh1q5.cloudfront.net/sv/2.183/dir/9f1/image/9f1e5e67e69a60178b4fc4d384327dab.jpg" id="imgSizer" class="d-block w-100" alt="..."></a>
+          <div class="carousel-caption d-md-block">
+            <h5>The Independent</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+{% endblock carousel %}
+
+{% block content_body %}
+<br>
+<br>
+
+
+
+<div id="topText">
+  <h5 id="newsText" class="text-muted"><strong>News</strong></h5>
+  <hr id="newsHead">
+</div>
+
+  
+  <div class="card-deck">
+    {% block card_content %}
+      <!--- FOR LOOP --->
+      {% for verge in verge_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ verge.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ verge.title_entry }}</strong></h5>
+          <p class="card-text">{{ verge.content_entry }} <a href="{{ verge.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ verge.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+
+      
+
+      <!--- FOR LOOP --->
+      {% for xxl in xxlmag_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ xxl.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ xxl.title_entry }}</strong></h5>
+          <p class="card-text">{{ xxl.content_entry }} <a href="{{ xxl.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ xxl.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+
+      
+
+      <!--- FOR LOOP --->
+      {% for indep in theindependent_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ indep.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ indep.title_entry }}</strong></h5>
+          <p class="card-text">{{ indep.content_entry }} <a href="{{ indep.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ indep.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+
+
+ 
+      <!--- FOR LOOP --->
+      {% for msnbc in msnbc_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ msnbc.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ msnbc.title_entry }}</strong></h5>
+          <p class="card-text">{{ msnbc.content_entry }} <a href="{{ msnbc.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ msnbc.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+      
+    {% endblock card_content %}
+  </div>
+  
+  
+  <div id="loadMore" class="container-fluid">
+    <a href="{% url 'load-page' %}"><button type="button" class="btn btn-primary btn-lg btn-block">Load More</button></a>
+  </div>
+ 
+{% endblock content_body %}

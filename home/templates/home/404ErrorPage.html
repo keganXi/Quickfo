@@ -1,0 +1,21 @@
+{% load static %}
+{% extends 'home/SiteLayout.html' %}
+{% block title %}Quickfo | 404 Error{% endblock title %}
+
+{% block stylers %}
+    <style>
+        #ErrorText{
+            color: #00ace6;
+            font-family: Courier;
+            font-size: 35px;
+            text-align: center;
+        }
+        
+    </style>
+{% endblock stylers%}
+
+{% block content_body %}
+    {% block card_content %}
+    <h1 id="ErrorText"><Strong style="color: red">404</Strong> Error Sorry Bro!</h1>
+    {% endblock card_content %}
+{% endblock content_body %}

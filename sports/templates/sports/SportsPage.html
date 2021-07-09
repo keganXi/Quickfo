@@ -1,0 +1,113 @@
+{% extends 'home/SiteLayout.html' %}
+{% block title %}QuickFo | World{% endblock title %}
+
+{% block jumbo %}
+    <style>
+    .JumboImg{
+      background-image: url("http://d1060ja7433lis.cloudfront.net/2yJoAP6nzA/cmsimg_1235588061.jpg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    </style>
+{% endblock jumbo %}
+
+
+{% block stylers %}
+    <style>
+     #newsHead{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+      }
+
+     #loadMore{
+        margin-bottom: 5%;
+        max-width: 500px;
+      }
+      
+    </style>
+{% endblock stylers %}
+
+{% block after_nav %}
+<div class="jumbotron jumbotron-fluid JumboImg">
+  <div class="container">
+    <h1 class="display-4; text-muted" id="contentHeading">Sports</h1>
+    <p class="lead; text-muted">All your favourite sports content in one place.</p>
+  </div>
+</div>
+{% endblock after_nav %}
+
+
+{% block content_body %}
+<br>
+<div id="topText">
+  <h5 id="newsText" class="text-muted"><strong>News</strong></h5>
+  <hr id="newsHead">
+</div>
+
+
+<div class="card-deck">
+    {% block card_content %}
+    <!--- FOR LOOP --->
+    {% for news in foxsports_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ news.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ news.title_entry }}</strong></h5>
+          <p class="card-text">{{ news.content_entry }} <a href="{{ news.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ news.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for guard in theguardian_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ guard.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ guard.title_entry }}</strong></h5>
+          <p class="card-text">{{ guard.content_entry }} <a href="{{ guard.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ guard.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for bbc in bbcsports_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ bbc.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ bbc.title_entry }}</strong></h5>
+          <p class="card-text">{{ bbc.content_entry }} <a href="{{ bbc.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ bbc.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for indep in theindependent_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ indep.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ indep.title_entry }}</strong></h5>
+          <p class="card-text">{{ indep.content_entry }} <a href="{{ indep.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ indep.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->  
+
+      <br><br>
+  {% endblock card_content %}
+  </div>
+  <div id="loadMore" class="container-fluid">
+    <a href="{% url 'sports_loader' %}"><button type="button" class="btn btn-primary btn-lg btn-block">Load More</button></a>
+  </div>
+
+{% endblock content_body %}

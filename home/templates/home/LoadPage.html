@@ -1,0 +1,133 @@
+{% extends 'home/SiteLayout.html' %}
+
+{% block title %}QuickFo{% endblock title %}
+
+{% block stylers %}
+
+<style>
+
+  #newsHead{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+  }
+
+  .column {
+    float: left;
+    width: 50%;
+  }
+
+/* Clear floats after the columns */
+  .row:after {
+    display: table;
+    clear: both;
+   }
+
+
+
+
+</style>
+
+{% endblock stylers %}
+
+
+
+{% block content_body %}
+
+<div id="loadedStories">
+<div class="row">
+    <div class="column">
+        <h5 class="text-muted" style="font-size: 18px"><strong>Loaded Stories</strong></h5>
+    </div> 
+</div>
+<hr id="newsHead">
+</div>
+
+
+<div class="card-deck">
+    {% block card_content %}
+      <!--- FOR LOOP --->
+      {% for verge in verge_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ verge.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ verge.title_entry }}</strong></h5>
+          <p class="card-text">{{ verge.content_entry }} <a href="{{ verge.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ verge.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+
+      
+
+      <!--- FOR LOOP --->
+      {% for xxl in xxlmag_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ xxl.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ xxl.title_entry }}</strong></h5>
+          <p class="card-text">{{ xxl.content_entry }} <a href="{{ xxl.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ xxl.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+
+      
+
+      <!--- FOR LOOP --->
+      {% for indep in theindependent_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ indep.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ indep.title_entry }}</strong></h5>
+          <p class="card-text">{{ indep.content_entry }} <a href="{{ indep.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ indep.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+
+
+
+      <!--- FOR LOOP --->
+      {% for msnbc in msnbc_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ msnbc.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ msnbc.title_entry }}</strong></h5>
+          <p class="card-text">{{ msnbc.content_entry }} <a href="{{ msnbc.link_entry }}"> Read more...<a></p>
+          <p class="card-text"><small class="text-muted">{{ msnbc.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      <br><br>
+      {% endfor %}
+      <!--- ENDFOR --->
+    {% endblock card_content %}
+  </div>
+
+
+  <div align='center' class="container-fluid">
+    <hr id="newsHead">
+    <button onclick="retBtn()" type="button" class="btn btn-outline-secondary">Previous</button>
+  </div>
+
+  <script>
+    function retBtn(){
+       window.history.back();
+    }
+  </script>
+{% endblock content_body %}

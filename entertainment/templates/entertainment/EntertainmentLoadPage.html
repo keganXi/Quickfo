@@ -1,0 +1,144 @@
+{% extends 'home/SiteLayout.html' %}
+{% block title %}QuickFo | Entertainment{% endblock title %}
+
+{% block jumbo %}
+    <style>
+    .JumboImg{
+      background-image: url("https://musicoomph.com/wp-content/uploads/2018/03/benefits-of-going-to-live-music-concerts.jpg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    </style>
+{% endblock jumbo %}
+
+
+{% block stylers %}
+    <style>
+     #newsHead{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+      }
+    
+     .column {
+        float: left;
+        width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        display: table;
+        clear: both;
+    }
+      
+    </style>
+{% endblock stylers %}
+
+{% block after_nav %}
+<div class="jumbotron jumbotron-fluid JumboImg">
+  <div class="container">
+    <h1 class="display-4; text-muted" id="contentHeading">Entertainment</h1>
+    <p class="lead; text-muted">All your favourite entertainment content in one place.</p>
+  </div>
+</div>
+{% endblock after_nav %}
+
+
+{% block content_body %}
+<div id="loadedStories">
+<div class="row">
+    <div class="column">
+        <h5 class="text-muted" style="font-size: 18px"><strong>Loaded Stories</strong></h5>
+    </div>
+</div>
+<hr id="newsHead">
+</div>
+
+
+<div class="card-deck">
+    {% block card_content %}
+    <!--- FOR LOOP --->
+    {% for news in bbc_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ news.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ news.title_entry }}</strong></h5>
+          <p class="card-text">{{ news.content_entry }} <a href="{{ news.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ news.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for iol in iol_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ iol.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ iol.title_entry }}</strong></h5>
+          <p class="card-text">{{ iol.content_entry }} <a href="{{ iol.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ iol.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for guard in theguardian_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ guard.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ guard.title_entry }}</strong></h5>
+          <p class="card-text">{{ guard.content_entry }} <a href="{{ guard.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ guard.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for time in time_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ time.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ time.title_entry }}</strong></h5>
+          <p class="card-text">{{ time.content_entry }} <a href="{{ time.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ time.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for xxl in xxlmag_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ xxl.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ xxl.title_entry }}</strong></h5>
+          <p class="card-text">{{ xxl.content_entry }} <a href="{{ xxl.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ xxl.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->   
+       
+
+      <br><br>
+  {% endblock card_content %}
+  </div>
+
+  <div align='center' class="container-fluid">
+      <hr id="newsHead">
+      <button onclick="retBtn()" type="button" class="btn btn-outline-secondary">Previous</button>
+  </div>
+
+  <script>
+    function retBtn(){
+       window.history.back();
+    }
+  </script>
+
+{% endblock content_body %}

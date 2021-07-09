@@ -1,0 +1,149 @@
+{% extends 'home/SiteLayout.html' %}
+{% block title %}QuickFo | Technology{% endblock title %}
+
+{% block jumbo %}
+    <style>
+    .JumboImg{
+      background-image: url("https://wallpapersite.com/images/pages/pic_w/11144.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    </style>
+{% endblock jumbo %}
+
+
+
+{% block stylers %}
+    <style>
+     #newsHead{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5%;
+      }
+
+     .column {
+        float: left;
+        width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        display: table;
+        clear: both;
+    }
+      
+    </style>
+{% endblock stylers %}
+
+
+
+
+{% block after_nav %}
+<div class="jumbotron jumbotron-fluid JumboImg">
+  <div class="container">
+    <h1 class="display-4; text-muted" id="contentHeading">Technology</h1>
+    <p class="lead; text-muted">All your favourite tech content in one place.</p>
+  </div>
+</div>
+
+{% endblock after_nav %}
+
+
+
+{% block content_body %}
+
+<div id="loadedStories">
+<div class="row">
+    <div class="column">
+        <h5 class="text-muted" style="font-size: 18px"><strong>Loaded Stories</strong></h5>
+    </div>
+</div>
+<hr id="newsHead">
+</div>
+
+<div class="card-deck">
+    {% block card_content %}
+    <!--- FOR LOOP --->
+    {% for news in verge_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ news.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ news.title_entry }}</strong></h5>
+          <p class="card-text">{{ news.content_entry }}<a href="{{ news.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ news.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for cnet in cnet_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ cnet.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ cnet.title_entry }}</strong></h5>
+          <p class="card-text">{{ cnet.content_entry }} <a href="{{ cnet.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ cnet.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for mash in mashable_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ mash.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ mash.title_entry }}</strong></h5>
+          <p class="card-text">{{ mash.content_entry }} <a href="{{ mash.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ mash.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for recode in recode_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ recode.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ recode.title_entry }}</strong></h5>
+          <p class="card-text">{{ recode.content_entry }} <a href="{{ recode.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ recode.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->
+      {% for giz in gizmodo_data %}
+      <div class="col">
+      <div class="card; shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <img class="card-img-top" src="{{ giz.media_entry }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#00ace6"><strong>{{ giz.title_entry }}</strong></h5>
+          <p class="card-text">{{ giz.content_entry }} <a href="{{ giz.link_entry }}"> Read more...</a></p>
+          <p class="card-text"><small class="text-muted">{{ giz.date_published }}</small></p>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+      <!--- END LOOP --->    
+
+      <br><br>
+  {% endblock card_content %}
+  </div>
+
+  <div align='center' class="container-fluid">
+      <hr id="newsHead">
+      <button onclick="retBtn()" type="button" class="btn btn-outline-secondary">Previous</button>
+  </div>
+
+  <script>
+    function retBtn(){
+       window.history.back();
+    }
+  </script>
+
+{% endblock content_body %}
